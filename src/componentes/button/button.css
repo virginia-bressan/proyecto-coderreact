@@ -1,0 +1,9 @@
+.btn {
+    padding: 5px 15px;
+    color: aliceblue;
+    max-width: 150px;
+    background-color: blue;
+    border: 5px solid cadetblue;
+    margin: 5px 15px;
+    cursor: pointer;
+}

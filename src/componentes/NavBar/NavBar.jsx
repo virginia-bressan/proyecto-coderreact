@@ -6,16 +6,16 @@ function NavBar() {
             <ul className="NavBar">
                 <li><img width={60} src="/assets/img/images.jpg" alt="" /></li>  
                 <li>
-                    <a href="/">Productos</a>
+                    <link to="/">Productos</link>
                 </li>
                 <li>
-                    <a href="/">Home</a>
+                    <link to="/">Home</link>
                 </li>
                 <li>
-                    <a href="/">Envios</a>
+                    <link to="/">Envios</link>
                 </li>
                 <li>
-                    <a href="/">¿Quienes Somos?</a>
+                    <link to="/">¿Quienes Somos?</link>
                 </li>
 
                 <CardWidget />
