@@ -10,10 +10,12 @@ function ItemDetailConteiner () {
     let { itemid } = useParams (); 
 
     useEffect(() => {
-        getSingleItems(itemid).then((respuesta) => {
+        getSingleItems(itemid)
+        .then((respuesta) => {
             setProduct(respuesta);
-        });
-    }, [ ]);
+        })
+        .catch((error) => alert(`Error: ${error}`));
+    }, [itemid]);
     
    
        return (

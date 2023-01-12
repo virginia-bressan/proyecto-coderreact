@@ -36,7 +36,7 @@ const databaseItems = [
         id: 4,
     },
     {
-        title: "Cuadernillo Triunfante T/d",
+        title: "Cuadernillo Triunfante ",
         price: 3500,
         detail: "Cuadernillo tapa dura, excelente calidad de hoja, los mas pedidos",
         imgurl: "/assets/img/cuadernillo.jpg",
@@ -97,9 +97,12 @@ export function getSingleItems (itemid) {
     })
 
 
-    return new Promise ((resolve) => {
+    return new Promise ((resolve, reject) => {
         setTimeout(() => {
+            if (itemReq ===! undefined)
             resolve(itemReq);
+            else 
+            reject ("Item no encontrado")
         }, 1000);
     });
 }
