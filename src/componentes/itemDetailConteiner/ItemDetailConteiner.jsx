@@ -7,14 +7,14 @@ import FlexWrapper from '../flexWrap/flexWrapper';
 function ItemDetailConteiner () {
     const [product, setProduct] = useState ([]);
     
-    let { itemid } = useParams (); 
+    let { itemid } = useParams(); 
 
     useEffect(() => {
         getSingleItems(itemid)
         .then((respuesta) => {
             setProduct(respuesta);
         })
-        .catch((error) => alert(`Error: ${error}`));
+        .catch ((error) => alert (`Error: ${error}`));
     }, [itemid]);
     
    
@@ -24,7 +24,7 @@ function ItemDetailConteiner () {
             <div className='card-detail'>
                <h1>Titulo: {product.title} </h1>
                <img src={product.imgurl} alt={product.title} />
-               <h2>Precio:{product.price}</h2>
+               <h2>Precio: ${product.price}</h2>
                <small>{product.detail}</small>
             </div>
             </FlexWrapper>

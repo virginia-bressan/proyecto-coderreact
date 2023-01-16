@@ -2,17 +2,30 @@ import React, { useEffect, useState } from 'react';
 import "./ItemListConteiner.css";
 import FlexWrapper from "../flexWrap/flexWrapper"
 import Item from "../Item/Item";
-import getItems from "../../services/mockAsyncService"
+import getItems, { getCategoryItems } from "../../services/mockAsyncService";
+import { useParams } from "react-router-dom";
+
 
 function ItemListConteiner() {
  const [products, setProducts] = useState ([]);
+
+ let { categoryid } = useParams(); 
  
  useEffect ( () => {
-    getItems().then((respuesta) => {
-        console.log(respuesta)
-        setProducts(respuesta)
+    if (categoryid){
+    getCategoryItems(categoryid).then((respuesta) => {
+        console.log(respuesta);
+        setProducts(respuesta);
      });
-  }, []) ;
+    }
+    else 
+    {
+        getItems().then((respuesta) => {
+            console.log(respuesta);
+            setProducts(respuesta);
+         });
+        }
+  }, [categoryid]) ;
  
 
     return (
@@ -23,8 +36,7 @@ function ItemListConteiner() {
                 key={item.title}
                 id={item.id}
                 title={item.title} 
-                price={item.price} 
-                detail={item.detail} 
+                price={item.price}  
                 imgurl={item.imgurl} 
                 />
                 ))}

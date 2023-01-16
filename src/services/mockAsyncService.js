@@ -22,7 +22,7 @@ const databaseItems = [
         price: 3000,
         detail: "marcadores trabi punta pincel los mas lindos",
         imgurl: "/assets/img/marcadorM.webp",
-        category: "fibrones/marcadores",
+        category: "fibronesMarcadores",
         stock: 12,
         id: 3,
     },
@@ -31,7 +31,7 @@ const databaseItems = [
         price: 2900,
         detail: "fibrones mas pedidos y hermosos",
         imgurl: "/assets/img/fibrontrabi.jpg",
-        category: "fibrones/marcadores",
+        category: "fibronesMarcadores",
         stock: 10,
         id: 4,
     },
@@ -81,8 +81,7 @@ const databaseItems = [
         id: 9,
     },
 ]
-
-function getItems () {
+ function getItems () {
     return new Promise ((resolve) => {
         setTimeout(() => {
             resolve(databaseItems);
@@ -92,21 +91,28 @@ function getItems () {
 
 export function getSingleItems (itemid) {
 
-    let itemReq = databaseItems.find (item => {
+    let itemReq = databaseItems.find ((item) => {
         return item.id === parseInt(itemid);
-    })
+    });
 
-
-    return new Promise ((resolve, reject) => {
+    return new Promise ((resolve,) => 
+    {
         setTimeout(() => {
-            if (itemReq ===! undefined)
             resolve(itemReq);
-            else 
-            reject ("Item no encontrado")
         }, 1000);
     });
 }
 
- 
+export function getCategoryItems (categoryid) {
+    let ItemCat = databaseItems.filter( (item) =>
+    item.category === categoryid)
+    return new Promise ((resolve,) => 
+    {
+        setTimeout(() => {
+            resolve(ItemCat);
+        }, 1000);
+    });
+}
+
 
 export default getItems;
