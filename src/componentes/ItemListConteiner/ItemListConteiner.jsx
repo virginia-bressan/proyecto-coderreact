@@ -11,21 +11,19 @@ function ItemListConteiner() {
 
  let { categoryid } = useParams(); 
  
- useEffect ( () => {
-    if (categoryid){
-    getCategoryItems(categoryid).then((respuesta) => {
-        console.log(respuesta);
-        setProducts(respuesta);
-     });
+
+  async function getProducts() {
+    if (!categoryid){
+       let response = await getItems();
+       setProducts(response);
+    }else {
+        let response = await getCategoryItems(categoryid);
+        setProducts(response);
     }
-    else 
-    {
-        getItems().then((respuesta) => {
-            console.log(respuesta);
-            setProducts(respuesta);
-         });
-        }
-  }, [categoryid]) ;
+  }
+ useEffect(() => {
+    getProducts();
+    }, [categoryid]);
  
 
     return (
