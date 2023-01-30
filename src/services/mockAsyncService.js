@@ -6,6 +6,7 @@ const databaseItems = [
         imgurl: "/assets/img/mochila.webp",
         category: "mochila",
         stock: 8,
+        discount: 30,
         id: 1,
     },
     {
@@ -34,6 +35,7 @@ const databaseItems = [
         category: "fibronesMarcadores",
         stock: 10,
         id: 4,
+        discount: 20,
     },
     {
         title: "Cuadernillo Triunfante ",
@@ -43,6 +45,7 @@ const databaseItems = [
         category: "cuadernillo",
         stock: 14,
         id: 5,
+        discount: 20,
     },
     {
         title: "canopla mooving 1",
@@ -61,6 +64,7 @@ const databaseItems = [
         category: "canopla",
         stock: 8,
         id: 7,
+        discount: 20,
     },
     {
         title: "mochila Lsyd",
@@ -85,7 +89,7 @@ const databaseItems = [
     return new Promise ((resolve) => {
         setTimeout(() => {
             resolve(databaseItems);
-        }, 1000);
+        }, 2000);
     });
 }
 
@@ -99,7 +103,7 @@ export function getSingleItems (itemid) {
     {
         setTimeout(() => {
             resolve(itemReq);
-        }, 1000);
+        }, 2000);
     });
 }
 
@@ -110,7 +114,7 @@ export function getCategoryItems (categoryid) {
     {
         setTimeout(() => {
             resolve(ItemCat);
-        }, 1000);
+        }, 2000);
     });
 }
 

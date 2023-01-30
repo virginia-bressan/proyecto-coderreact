@@ -1,36 +1,38 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import './ItemCount.css';
 
-const ItemCount = ({ onAdd, stock }) => {
-    const [count, setCount]= useState(0)
+function ItemCount ({onAddToCart}){
+    const [count, setCount]= useState(0);
 
-    const decrement = () => {
-        setCount(prev => prev - 1)
+    function handleAdd() {
+        setCount (count + 1);
     }
 
-    const increment = () => {
-        for(let i = 0; i < 5; i++) {
-            setCount(previo => {
-                console.log(previo)
-                console.log(count)
-                return previo + 1
-            })
-        }
-        return
+    function handleSubstract() {
+        setCount (count - 1);
     }
-
-    const reset = () => {
-        setCount(0)
-    }
-
     return (
-        <div>
-            <h1>Contador</h1>
-            <h2>{count}</h2>
-            <button onClick={decrement}>-</button>
-            <button onClick={increment}>+</button>
-            <button onClick={() => onAdd(count)}>Agregar al carrito</button>
+        <div className='itemcount'>
+            <small>Agrega la cantidad a carrito</small>
+            <div className='count'>
+                <button className='btn' onClick={handleSubstract}>
+                 . ➖ .
+                </button>
+                <span>{count}</span>
+                <button className='btn' onClick={handleAdd}>
+                . ➕ . 
+                </button>
+            </div>
+
+            <div>
+                <button className='btn' onClick={onAddToCart(count)}>
+                    Agregar al carrito
+                </button>
+            </div>
         </div>
-    )
+    );
 }
 
-export default ItemCount
+export default ItemCount;
+
+    

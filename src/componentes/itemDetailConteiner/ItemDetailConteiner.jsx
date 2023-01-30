@@ -1,35 +1,23 @@
-import React, {  useState, useEffect} from "react";
-import { useParams } from "react-router-dom";
-import { getSingleItems } from "../../services/mockAsyncService"
-import FlexWrapper from '../flexWrap/flexWrapper';
+import React from "react";
+import { Link } from "react-router-dom";
+import { ButtonChild } from "../button/Button";
+import ItemDetail from "../itemDetail/itemDetail.";
 
 
-function ItemDetailConteiner () {
-    const [product, setProduct] = useState ([]);
+
+
+function ItemDetailConteiner() {
+ 
     
-    let { itemid } = useParams(); 
 
-    useEffect(() => {
-        getSingleItems(itemid)
-        .then((respuesta) => {
-            setProduct(respuesta);
-        })
-        .catch ((error) => alert (`Error: ${error}`));
-    }, [itemid]);
-    
-   
-       return (
-           <>
-           <FlexWrapper>
-            <div className='card-detail'>
-               <h1>Titulo: {product.title} </h1>
-               <img src={product.imgurl} alt={product.title} />
-               <h2>Precio: ${product.price}</h2>
-               <small>{product.detail}</small>
-            </div>
-            </FlexWrapper>
-           </>
-       );
+    return (
+        <> 
+            <ItemDetail />
+            <Link to="/cart">
+             <ButtonChild>Ir al carrito</ButtonChild>
+            </Link>
+        </>
+    );
 }
 
 export default ItemDetailConteiner;

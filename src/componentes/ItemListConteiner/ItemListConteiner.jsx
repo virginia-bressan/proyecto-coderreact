@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import "./ItemListConteiner.css";
-import FlexWrapper from "../flexWrap/flexWrapper"
-import Item from "../Item/Item";
+import FlexWrapper from "../flexWrap/flexWrapper";
 import getItems, { getCategoryItems } from "../../services/mockAsyncService";
 import { useParams } from "react-router-dom";
+import ItemList from '../itemList/ItemList';
+import Loader from '../loader/Loader';
 
 
 function ItemListConteiner() {
  const [products, setProducts] = useState ([]);
+ const [ isLoading, setISLoading] = useParams(true);
 
  let { categoryid } = useParams(); 
  
@@ -16,9 +18,11 @@ function ItemListConteiner() {
     if (!categoryid){
        let response = await getItems();
        setProducts(response);
+       setISLoading(false);
     }else {
         let response = await getCategoryItems(categoryid);
         setProducts(response);
+        setISLoading(false);
     }
   }
  useEffect(() => {
@@ -26,18 +30,14 @@ function ItemListConteiner() {
     }, [categoryid]);
  
 
+    if (isLoading)
+    return <Loader/>;
     return (
         <>
             <FlexWrapper>
-                {products.map((item) => (
-                <Item 
-                key={item.title}
-                id={item.id}
-                title={item.title} 
-                price={item.price}  
-                imgurl={item.imgurl} 
-                />
-                ))}
+             <div>
+                 <ItemList products={products}/>
+             </div>
             </FlexWrapper>
         </>
     );

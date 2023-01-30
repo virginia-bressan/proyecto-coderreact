@@ -1,6 +1,7 @@
 import CardWidget from "../CardWidget/CardWidget";
 import { Link } from "react-router-dom";
 import "./NavBar.css"
+import { ButtonChild } from "../button/Button";
 function NavBar() {
     return (
         <nav>
@@ -21,6 +22,8 @@ function NavBar() {
                 <li>
                     <Link to="/category/cuadernillo">Cuadernillo</Link>
                 </li>
+
+                <ButtonChild onClick={ ()=> alert ("click")}>Login</ButtonChild>
 
                 <CardWidget />
             </ul>

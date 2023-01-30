@@ -1,0 +1,13 @@
+.itemcount {
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 10px rgb(182, 182, 182);
+}
+.btn{
+    padding: 2px;
+    margin: 2px;
+    background-color: skyblue;
+    color: black;
+}
