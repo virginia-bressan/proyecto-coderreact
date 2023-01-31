@@ -7,17 +7,25 @@ export function CartContextProvider(props) {
 
     function addItem(item) {
         let newCart = [...cart];
-        const iteminCart = cart.find(iteminCart => iteminCart.id === item.id)
-        newCart.push(item);
-        setCart(newCart);
+        const IsInCart = cart.some(iteminCart => iteminCart.id === item.id)
+        if (IsInCart){
+            let newCart = [...cart];
+            let index = cart.findIndex(iteminCart => iteminCart.id === item.id)
+            newCart([index])
+        }
+        else{
+            setCart([... cart, item]); 
+        }
+       
     }
 
     function removeItem(id) {
-        // Código para buscar y eliminar el item con el id específico
         const items = [...cart.items];
         const updatedItems = items.filter(item => item.id !== id);
-        // Actualiza la lista de items con los items restantes después de eliminar el item con el id específico
         cart.items = updatedItems;
+    }
+    function clearCart(){
+
     }
     function getTotalItems() {
         let total = 0;
@@ -28,7 +36,7 @@ export function CartContextProvider(props) {
 
     }
     return (
-        <cartContext.Provider value={{ cart, addItem, getTotalItems, removeItem }}>
+        <cartContext.Provider value={{ cart, addItem, getTotalItems, removeItem, clearCart }}>
             {props.children}
         </cartContext.Provider>
     );
