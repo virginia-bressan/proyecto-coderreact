@@ -46,9 +46,11 @@ const ButtonCount = ({ onConfirm, stock, initial = 1 }) => {
 }
 
 
-const ItemDetail = ({ id, name, category, img, price, stock, description}) => {
+const ItemDetail = ({ id, title, category, imgurl, price, stock, detail}) => {
+
+    
     const [inputType, setInputType] = useState('button')
-    // const [quantity, setQuantity] = useState(0)
+
 
     const ItemCount = inputType === 'input' ? InputCount : ButtonCount
 
@@ -56,11 +58,9 @@ const ItemDetail = ({ id, name, category, img, price, stock, description}) => {
     
 
     const handleOnAdd = (quantity) => {
-        console.log('agregue al carrito: ', quantity)
-
-        // setQuantity(parseInt(quantity))   
+        console.log('agregue al carrito: ', quantity)  
         
-        addItem({ id, name, price, quantity})
+        addItem({ id, title, price, quantity})
         
     }
 
@@ -71,18 +71,18 @@ const ItemDetail = ({ id, name, category, img, price, stock, description}) => {
             </button>
             <header className="Header">
                 <h2 className="ItemHeader">
-                    {name}
+                    {title}
                 </h2>
             </header>
             <picture>
-                <img src={img} alt={name} className="ItemImg"/>
+                <img src={imgurl} alt="img" className="ItemImg"/>
             </picture>
             <section>
                 <p className="Info">
                     Categoria: {category}
                 </p>
                 <p className="Info">
-                    Descripción: {description}
+                    Descripción: {detail}
                 </p>
                 <p className="Info">
                     Precio: {price}
