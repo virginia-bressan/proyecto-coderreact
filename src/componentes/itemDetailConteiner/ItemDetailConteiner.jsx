@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react'
-import getItems, { getProductById } from '../../services/mockAsyncService'
+import getSingleItems from '../../services/mockAsyncService'
 import ItemDetail from '../itemDetail/itemDetail.'
 
 import { useParams } from 'react-router-dom'
@@ -9,19 +9,19 @@ const ItemDetailContainer = () => {
     const [product, setProduct] = useState()
     const [loading, setLoading] = useState(true)
 
-    const { productId } = useParams()
+    const { itemid } = useParams()
 
     useEffect(() => {
         document.title = 'Detalle del producto'
     }, [])
 
     useEffect(() => {
-        getItems(productId).then(response => {
+        getSingleItems(itemid).then(response => {
             setProduct(response)
         }).finally(() => {
             setLoading(false)
         })
-    }, [productId])
+    }, [itemid])
 
     if(loading) {
         return <h1>Cargando...</h1>
