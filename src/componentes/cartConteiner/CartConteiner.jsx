@@ -6,7 +6,7 @@ import  databaseItems  from '../../services/mockAsyncService';
 const CartContainer = (id) => {
     const { cart, removeItem, getTotalPriceInCart, clearCart } = useContext(cartContext)
     console.log(cart)
-    let item = databaseItems
+    let item = databaseItems;
     return (
     
         <div>
