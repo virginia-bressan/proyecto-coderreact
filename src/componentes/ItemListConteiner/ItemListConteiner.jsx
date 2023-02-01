@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import "./ItemListConteiner.css";
-import FlexWrapper from "../flexWrap/flexWrapper";
 import getItems, { getCategoryItems } from "../../services/mockAsyncService";
 import { useParams } from "react-router-dom";
 import ItemList from '../itemList/ItemList';
@@ -9,7 +8,7 @@ import Loader from '../loader/Loader';
 
 function ItemListConteiner() {
  const [products, setProducts] = useState ([]);
- const [ isLoading, setISLoading] = useParams(true);
+ const [ isLoading, setISLoading] = useState(true);
 
  let { categoryid } = useParams(); 
  
@@ -34,13 +33,14 @@ function ItemListConteiner() {
     return <Loader/>;
     return (
         <>
-            <FlexWrapper>
-             <div>
+            
+             <div className='ItemList'>
                  <ItemList products={products}/>
              </div>
-            </FlexWrapper>
+           
         </>
     );
 }
 
 export default ItemListConteiner;
+

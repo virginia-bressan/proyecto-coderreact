@@ -6,7 +6,6 @@ export function CartContextProvider(props) {
     const [cart, setCart] = useState([]);
 
     function addItem(item) {
-        let newCart = [...cart];
         const IsInCart = cart.some(iteminCart => iteminCart.id === item.id)
         if (IsInCart){
             let newCart = [...cart];
@@ -14,7 +13,7 @@ export function CartContextProvider(props) {
             newCart([index])
         }
         else{
-            setCart([... cart, item]); 
+            setCart([...cart, item]); 
         }
        
     }
@@ -28,6 +27,7 @@ export function CartContextProvider(props) {
 
     }
     function getTotalItems() {
+        //const total = carrito.reduce((acc, el) => acc + el.precio * el.cantidad, 0);
         let total = 0;
         cart.forEach(item => {
             total += item.quantity;

@@ -4,3 +4,12 @@
     font-size: 40px;
     background-color: bisque;
 }
+
+.ItemList {
+
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: 80vh;
+}

@@ -1,48 +1,105 @@
-import React, {  useState, useEffect, useContext} from "react";
-import { useParams } from "react-router-dom";
-import { getSingleItems } from "../../services/mockAsyncService"
-import FlexWrapper from '../flexWrap/flexWrapper';
-import { cartContext } from "../../storage/cartContext";
-import ItemCount from "../ItemCount/ItemCount";
+import './ItemDetail.css'
+import { useContext, useState } from 'react'
+import ItemCount from '../ItemCount/ItemCount'
+import { Link } from 'react-router-dom'
+import { cartContext } from '../../storage/cartContext'
+
+const InputCount = ({onConfirm, stock, initial= 1}) => {
+    const [count, setCount] = useState(initial)
+
+    const handleChange = (e) => {
+        if(e.target.value <= stock) {
+            setCount(e.target.value)
+        }
+    }
+
+    return (
+        <div>
+            <input type='number' onChange={handleChange} value={count}/>
+            <button onClick={() => onConfirm(count)}>Agregar al carrito</button>
+        </div>
+    )
+}
+
+const ButtonCount = ({ onConfirm, stock, initial = 1 }) => {
+    const [count, setCount] = useState(initial)
+
+    const increment = () => {
+        if(count < stock) {
+            setCount(count + 1)
+        }
+
+    }
+
+    const decrement = () => {
+            setCount(count - 1)
+
+    }
+
+    return (
+        <div>
+            <p>{count}</p>
+            <button onClick={decrement}>-</button>
+            <button onClick={increment}>+</button>
+            <button onClick={() => onConfirm(count)}>Agregar al carrito</button>
+        </div>
+    )
+}
 
 
-function ItemDetail () {
-    const [product, setProduct] = useState ([]); 
-    let { itemid } = useParams();  
-    const {addItem, removeItem} = useContext (cartContext);
+const ItemDetail = ({ id, name, category, img, price, stock, description}) => {
+    const [inputType, setInputType] = useState('button')
+    // const [quantity, setQuantity] = useState(0)
+
+    const ItemCount = inputType === 'input' ? InputCount : ButtonCount
+
+    const { addItem, isInCart } = useContext(cartContext)
     
 
-     function handleAddToCart(count){
-        alert(`Agregaste ${count} de ${product.title} al carrito😎`);
-        product.count = count;
-        addItem(product);
+    const handleOnAdd = (quantity) => {
+        console.log('agregue al carrito: ', quantity)
+
+        // setQuantity(parseInt(quantity))   
+        
+        addItem({ id, name, price, quantity})
         
     }
 
-
-    useEffect(() => {
-        getSingleItems(itemid)
-        .then((respuesta) => {
-            setProduct(respuesta);
-        })
-        .catch ((error) => alert (`Error: ${error}`));
-    }, [itemid]);
-    
-   
-       return (
-           <>
-           <FlexWrapper>
-            <div className='card-detail'>
-               <h1>Titulo: {product.title} </h1>
-               <img src={product.imgurl} alt={product.title} />
-               <h2>Precio: ${product.price}</h2>
-               <small>{product.detail}</small>
-            </div>
-            </FlexWrapper>
-            <ItemCount onAddToCart={handleAddToCart}/>
-           <button onClick={() => removeItem (product.id)}>eliminar Item</button>
-           </>
-       );
+    return (
+        <article className="CardItem">
+            <button onClick={() => setInputType(inputType === 'input' ? 'button' : 'input')}>
+                Cambiar contador
+            </button>
+            <header className="Header">
+                <h2 className="ItemHeader">
+                    {name}
+                </h2>
+            </header>
+            <picture>
+                <img src={img} alt={name} className="ItemImg"/>
+            </picture>
+            <section>
+                <p className="Info">
+                    Categoria: {category}
+                </p>
+                <p className="Info">
+                    Descripción: {description}
+                </p>
+                <p className="Info">
+                    Precio: {price}
+                </p>
+            </section>           
+            <footer className='ItemFooter'>
+                {
+                    isInCart(id) ? (
+                        <Link to='/cart'>Terminar compra</Link>
+                    ) : (
+                        <ItemCount stock={stock} onConfirm={handleOnAdd} />
+                    )
+                }
+            </footer>
+        </article>
+    )
 }
 
-export default ItemDetail;
+export default ItemDetail
