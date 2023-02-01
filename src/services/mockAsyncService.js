@@ -89,7 +89,7 @@ const databaseItems = [
     return new Promise ((resolve) => {
         setTimeout(() => {
             resolve(databaseItems);
-        }, 2000);
+        }, 2500);
     });
 }
 
@@ -103,7 +103,7 @@ export function getSingleItems (itemid) {
     {
         setTimeout(() => {
             resolve(itemReq);
-        }, 2000);
+        }, 2500);
     });
 }
 
@@ -114,7 +114,7 @@ export function getCategoryItems (categoryid) {
     {
         setTimeout(() => {
             resolve(ItemCat);
-        }, 2000);
+        }, 2500);
     });
 }
 
