@@ -29,11 +29,9 @@ export function CartContextProvider(props) {
         setCart([])
     }
     function getTotalItems() {
-        let total = 0;
-        cart.forEach(item => {
-            total += item.quantity;
-        });
-        return total;
+       // let total = 0; cart.forEach(item => { total += item.quantity; }); return total;
+       let total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+       return total;
     }
     return (
         <cartContext.Provider value={{ cart, addItem, getTotalItems, removeItem, clearCart, isInCart}}>
