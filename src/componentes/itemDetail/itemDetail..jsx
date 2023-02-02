@@ -3,6 +3,7 @@ import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { cartContext } from '../../storage/cartContext'
 import ItemCount from '../ItemCount/ItemCount'
+import FlexWrapper from "../flexWrap/flexWrapper"
 
 const ItemDetail = ({ id, title, category, imgurl, price, stock, detail}) => {
     
@@ -14,6 +15,8 @@ const ItemDetail = ({ id, title, category, imgurl, price, stock, detail}) => {
     }
     
     return (
+        <FlexWrapper>
+        
         <article className="CardItem">
             <header className="Header">
                 <h2 className="ItemHeader">
@@ -45,6 +48,7 @@ const ItemDetail = ({ id, title, category, imgurl, price, stock, detail}) => {
                 }
             </footer>
         </article>
+        </FlexWrapper>
     )
 }
 

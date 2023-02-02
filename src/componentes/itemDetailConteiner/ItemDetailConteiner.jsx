@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import {getSingleItems} from '../../services/mockAsyncService'
 import ItemDetail from '../itemDetail/itemDetail.'
-
+import Loader from '../loader/Loader'
 import { useParams } from 'react-router-dom'
 
 const ItemDetailContainer = () => {
@@ -24,7 +24,7 @@ const ItemDetailContainer = () => {
     }, [itemid])
 
     if(loading) {
-        return <h1>Cargando...</h1>
+        return <Loader/>;
     }
 
     return(

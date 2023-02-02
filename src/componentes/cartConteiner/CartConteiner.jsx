@@ -1,19 +1,16 @@
 import { useContext } from "react";
 import { cartContext } from "../../storage/cartContext";
 import { Link } from "react-router-dom";
-import  databaseItems  from '../../services/mockAsyncService';
 
 const CartContainer = (id) => {
     const { cart, removeItem, getTotalPriceInCart, clearCart } = useContext(cartContext)
-    console.log(cart)
-    let item = databaseItems;
+
     return (
-    
         <div>
             <h1>Tu carrito</h1>
             <div>
                 {
-                    cart.map((id) => {
+                    cart.map((item) => {
                         <div>
                             <h3>{item.title}</h3>
                             <img width="100" src={item.imgurl} alt="img" />
@@ -21,7 +18,6 @@ const CartContainer = (id) => {
                             <p>{item.count}</p>
                             <button onClick={removeItem(id)}>Eliminar producto</button>
                             <button onClick={clearCart()}>Vaciar carrito</button>
-
                         </div>
                     })}
             </div>
@@ -32,4 +28,4 @@ const CartContainer = (id) => {
     )
 }
 
-export default CartContainer ;
+export default CartContainer;
