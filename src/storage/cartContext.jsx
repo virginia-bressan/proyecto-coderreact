@@ -17,32 +17,27 @@ export function CartContextProvider(props) {
         }
        
     };
+    
     const isInCart = (id) => {
         return cart.some((e) => e.id === id);
     };
-
+   
     function removeItem(id) {
-        const items = [...cart.items];
-        const updatedItems = items.filter(item => item.id !== id);
-        cart.items = updatedItems;
+        setCart(cart.filter((item)=> item.id !== id))
     }
     function clearCart(){
-
+        setCart([])
     }
     function getTotalItems() {
-        //const total = carrito.reduce((acc, el) => acc + el.precio * el.cantidad, 0);
         let total = 0;
         cart.forEach(item => {
             total += item.quantity;
         });
         return total;
-
     }
     return (
         <cartContext.Provider value={{ cart, addItem, getTotalItems, removeItem, clearCart, isInCart}}>
             {props.children}
         </cartContext.Provider>
     );
-}
-
-
+};
