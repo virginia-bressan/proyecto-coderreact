@@ -3,7 +3,7 @@ import { cartContext } from "../../storage/cartContext";
 import { Link } from "react-router-dom";
 
 const CartContainer = (id) => {
-    const { cart, removeItem, getTotalItems, clearCart } = useContext(cartContext)
+    const { cart, removeItem, getTotalPriceInCart, clearCart } = useContext(cartContext)
 
     return (
         <div>
@@ -21,7 +21,7 @@ const CartContainer = (id) => {
                         </div>
                     })}
             </div>
-            <small>El total de tu compra es de $ {getTotalItems()}</small>
+            <small>El total de tu compra es de $ {getTotalPriceInCart()}</small>
 
             <Link to='/checkout'>Checkout</Link>
         </div>
