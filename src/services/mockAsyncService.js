@@ -1,6 +1,6 @@
 const databaseItems = [
     {
-        title: "mochila wilson",
+        title: "Mochila wilson",
         price: 7000,
         detail: "la calidad reconocida durante años",
         imgurl: "/assets/img/mochila.webp",

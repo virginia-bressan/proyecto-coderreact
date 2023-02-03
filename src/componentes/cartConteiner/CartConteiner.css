@@ -1,0 +1,9 @@
+.totalComp {
+    font-weight: bolder;
+    font-size: 13px;
+}
+.card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-around ;
+}
