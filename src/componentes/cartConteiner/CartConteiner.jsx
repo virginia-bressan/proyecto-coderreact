@@ -18,8 +18,9 @@ const CartContainer = (id) => {
                             <img width="100" src={item.imgurl} alt="img" />
                             <p>{item.price}</p>
                             <p>{item.count}</p>
-                            <button onClick={()=>removeItem(id)}>Eliminar producto</button>
+                            <button onClick={()=>removeItem(item.id)}>Eliminar producto</button>
                             <button onClick={()=>clearCart()}>Vaciar carrito</button>
+                            
                         </div>
                         );
                     })}

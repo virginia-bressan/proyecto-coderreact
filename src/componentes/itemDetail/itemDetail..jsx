@@ -11,7 +11,7 @@ const ItemDetail = ({ id, title, category, imgurl, price, stock, detail}) => {
 
     const handleOnAdd = (quantity) => {
         console.log('agregue al carrito: ', quantity)
-        addItem({ id, title, price, quantity})
+        addItem({ id, title, price, quantity, imgurl})
     }
     
     return (
