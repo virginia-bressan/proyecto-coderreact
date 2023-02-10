@@ -10,6 +10,7 @@ const ItemDetailContainer = () => {
     const [loading, setLoading] = useState(true)
 
     const { itemid } = useParams()
+    
 
     useEffect(() => {
         document.title = 'Detalle del producto'

@@ -6,7 +6,9 @@ import NavBar from './componentes/NavBar/NavBar';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { CartContextProvider } from './storage/cartContext';
 import CartContainer  from "./componentes/cartConteiner/CartConteiner";
-import { exportData } from './services/firebase';
+
+import { exportDataWithBatch } from './services/firebase';
+import Checkout from './componentes/Checkout/Checkout';
 
 
 function App() {
@@ -14,7 +16,7 @@ function App() {
   return (
     <>
     <CartContextProvider>
-    <button onClick={exportData}>Export Data</button>
+    <button onClick={exportDataWithBatch}>Export Data</button>
    <BrowserRouter>
    <NavBar/>
      <Routes>
@@ -22,7 +24,7 @@ function App() {
        <Route path='/category/:categoryid' element={ <ItemListConteiner/> }/>
        <Route path='/item/:itemid' element={ <ItemDetailConteiner/> }/>
        <Route path='/cart' element={<CartContainer/>} />
-
+       <Route path='/checkout' element={<Checkout />} />
        <Route path='*' element={ <h1>404: Page not found</h1>} />
      </Routes>
    

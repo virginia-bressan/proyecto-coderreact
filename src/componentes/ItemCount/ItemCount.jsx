@@ -1,16 +1,19 @@
 import { useState } from 'react';
 import './ItemCount.css';
 
-function ItemCount ({onAddToCart}){
+function ItemCount ({onAddToCart, stock}){
     const [count, setCount]= useState(0);
 
     function handleAdd() {
+        if(count < stock)
         setCount (count + 1);
     }
 
     function handleSubstract() {
         setCount (count - 1);
     }
+
+
     return (
         <div className='itemcount'>
             <small>Agrega la cantidad a carrito</small>

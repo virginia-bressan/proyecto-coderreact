@@ -7,7 +7,8 @@ import FlexWrapper from "../flexWrap/flexWrapper"
 
 const ItemDetail = ({ id, title, category, imgurl, price, stock, detail}) => {
     
-    const { addItem, isInCart } = useContext(cartContext)
+    const {isInCart, addItem } = useContext(cartContext)
+    
 
     const handleOnAdd = (quantity) => {
         console.log('agregue al carrito: ', quantity)

@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { cartContext } from "../../storage/cartContext";
 import "./CartConteiner.css";
-import { ButtonChild } from "../button/Button";
 import { createBuyOrder } from "../../services/firebase";
 import { useState } from "react";
+import CartForm from "./cartForm";
 
 
 const CartContainer = (id) => {
@@ -54,8 +54,8 @@ const CartContainer = (id) => {
                             <p> $ {item.price} c/u</p>
                             <p>{item.count}</p>
                             <p>Subtotal: $ {item.price * item.quantity}</p>
-                            <button onClick={()=>removeItem(item.id)}>Eliminar producto</button>
-                            <button onClick={()=>clearCart()}>Vaciar carrito</button>
+                            <button className="btn"onClick={()=>removeItem(item.id)}>Eliminar producto</button>
+                            <button className="btn" onClick={()=>clearCart()}>Vaciar carrito</button>
                             
                         </div>
                         );
@@ -63,7 +63,8 @@ const CartContainer = (id) => {
             </div>
             <h3 className="totalComp">El total de tu compra es de $  {getTotalPriceInCart()}  </h3>
         </div> 
-        <ButtonChild onTouch={()=>handleCheckout()}> Finalizar Compra </ButtonChild>
+        <button className="btn-fin"onTouch={()=>handleCheckout()}> Finalizar Compra </button>
+        <CartForm onSubmit={handleCheckout}/>
         </>
         );
     }
