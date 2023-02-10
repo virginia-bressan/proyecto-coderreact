@@ -1,4 +1,4 @@
-.CardItemDetail {
+.CardItem {
     width: 500px;
     padding: 30px;
     margin: 30px;
@@ -13,6 +13,7 @@
     flex-direction: column;
     margin-bottom: 10px;
     border-radius: 25px;
+    
 }
 
 .ItemHeader {
@@ -30,6 +31,7 @@
 .ItemImg {
     width: 120px;
     height: 120px;
-    justify-items: center;
+    object-fit: cover;
     object-position: center;
+    
 }

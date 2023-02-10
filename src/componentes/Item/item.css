@@ -1,0 +1,52 @@
+.Detail {
+    width: auto;
+    padding: 12px;
+    font-weight: bolder;
+    font-size: 10px;
+    background: #dab5c8;
+    border-radius: 8px;
+    flex: none;
+    display: flex;
+    order: 1;
+    align-self: center;
+    flex-grow: 0;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    border: none;
+    border-style: none;
+    cursor: pointer;
+    outline: inherit;
+}
+.item-card {
+    width: 160px;
+    padding: 30px;
+    margin: 30px;
+    font-size: 12px;
+    background-color: papayawhip;
+    border: 1px solid #e1e1e1;
+    border-radius: 10px;
+}
+
+.Header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    justify-content: center;
+}
+ 
+.Info {
+    font-size: 12px;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.ItemImg {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    object-position: center;
+}

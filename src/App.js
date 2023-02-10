@@ -6,16 +6,15 @@ import NavBar from './componentes/NavBar/NavBar';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { CartContextProvider } from './storage/cartContext';
 import CartContainer  from "./componentes/cartConteiner/CartConteiner";
-import { testApp } from './services/firebase';
+import { exportData } from './services/firebase';
 
 
 function App() {
-
-  testApp();
   
   return (
     <>
     <CartContextProvider>
+    <button onClick={exportData}>Export Data</button>
    <BrowserRouter>
    <NavBar/>
      <Routes>

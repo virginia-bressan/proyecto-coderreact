@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import "./ItemListConteiner.css";
-import getItems, { getCategoryItems } from "../../services/mockAsyncService";
+import { getCategoryItems } from "../../services/firebase";
+import { getItems } from '../../services/firebase';
 import { useParams } from "react-router-dom";
 import ItemList from '../itemList/ItemList';
 import Loader from '../loader/Loader';

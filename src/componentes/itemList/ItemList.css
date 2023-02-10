@@ -1,8 +1,9 @@
+
 .ListGroup {
     display: grid;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    min-height: 80vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        ". . . ."
+        ". . . .";
 }

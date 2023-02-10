@@ -2,8 +2,9 @@
     margin: 5px;
     padding: 5px;
     text-align: center;
-    font-weight: bold;
+    font-weight: bolder;
     border-radius: 10px rgb(182, 182, 182);
+    font-size: 15px;
 }
 .btn{
     padding: 2px;
