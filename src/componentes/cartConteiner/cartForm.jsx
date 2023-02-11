@@ -1,4 +1,6 @@
 import { useState } from "react";
+import "./cartForm.css";
+
 
 
 function InputForm(props) {
@@ -13,24 +15,24 @@ function InputForm(props) {
         </div>
     );
 }
-export default function CartForm(){
+export default function CartForm(props){
     const [userData, setUserData] = useState({
         name: "",
         email: "",
         phone: "",
     });
-    console.log("State", userData);
+    console.log("State:", userData);
 
     function onInputChange(evt){
         const field = evt.target.name;
         const value = evt.target.value;
-        console.log(field, value);
-    }
+    
 
-    const newState = { ...userData};
+    const newState = { ...userData };
+
     newState[field] = value;
     setUserData(newState);
-
+}
 
     function clearData() {
         setUserData({
@@ -42,6 +44,7 @@ export default function CartForm(){
 
     function onSubmit(evt){
         evt.preventDefault();
+        props.onSubmit(userData);
     }
 
     let arrayUserData = Object.keys(userData);
@@ -57,7 +60,7 @@ export default function CartForm(){
                 label={field}
                 />
             ))}
-            <button
+            <button className="btn"
             disabled={
                 !(
                     userData.name !== "" &&
@@ -68,7 +71,7 @@ export default function CartForm(){
             type="submit"
             > Crear orden
             </button>
-            <button onClick={clearData}>Limpiar Datos</button>
+            <button className="btn" onClick={clearData}>Limpiar Datos</button>
         </form>  
     );
 

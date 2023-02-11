@@ -10,7 +10,7 @@ const CartContainer = (id) => {
     const { cart, removeItem, getTotalPriceInCart, clearCart } = useContext(cartContext)
     const [ orderId, setOrderId ] = useState(null);
 
-    async function handleCheckout(evt){
+    async function handleCheckout(userData){
         const items = cart.map (product => ({ 
             id: product.id, 
             title: product.title,
@@ -18,10 +18,7 @@ const CartContainer = (id) => {
             count: product.count,
         }))
         const order = {
-            buyer: {
-                name: "sakjs",
-                email: "ahjsdh",
-            },
+            buyer: userData,
             items: items,
             date: new Date(),
             total: getTotalPriceInCart(),
