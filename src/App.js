@@ -8,7 +8,7 @@ import { CartContextProvider } from './storage/cartContext';
 import CartContainer  from "./componentes/cartConteiner/CartConteiner";
 
 import { exportDataWithBatch } from './services/firebase';
-import Checkout from './componentes/Checkout/Checkout';
+
 
 
 function App() {
@@ -24,7 +24,6 @@ function App() {
        <Route path='/category/:categoryid' element={ <ItemListConteiner/> }/>
        <Route path='/item/:itemid' element={ <ItemDetailConteiner/> }/>
        <Route path='/cart' element={<CartContainer/>} />
-       <Route path='/checkout' element={<Checkout />} />
        <Route path='*' element={ <h1>404: Page not found</h1>} />
      </Routes>
    

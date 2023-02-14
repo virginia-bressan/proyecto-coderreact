@@ -16,7 +16,7 @@ const CartContainer = (id) => {
             title: product.title,
             price: product.price,
             count: product.count,
-        }))
+        }));
         const order = {
             buyer: userData,
             items: items,
@@ -26,16 +26,19 @@ const CartContainer = (id) => {
 
         let id = await createBuyOrder(order);
 
-        setOrderId(id)
-    }
-
-    if (orderId ===! null)
+        setOrderId(id);
+    
+  
+    }  
+    if (orderId !== null)
     return (
         <div>
             <h1>Muchas gracias por tu compra 🤩</h1>
             <p>El ID de tu compra es: {orderId}</p>
         </div>
     );
+
+   
     return (
         <>
         <div>
@@ -60,7 +63,7 @@ const CartContainer = (id) => {
             </div>
             <h3 className="totalComp">El total de tu compra es de $  {getTotalPriceInCart()}  </h3>
         </div> 
-        <button className="btn-fin"onTouch={()=>handleCheckout()}> Finalizar Compra </button>
+   
         <CartForm onSubmit={handleCheckout}/>
         </>
         );
